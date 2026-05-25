@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El-Bub TerKiyowok 🌸</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/emoji-picker-element@1/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/picmo@5.8.5/dist/umd/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@picmo/popup-picker@5.8.5/dist/umd/index.js"></script>
+</head>
+<body>
+
+    <div class="sakura-container">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <div class="sakura-branch"></div>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile">
+                <div class="profile-img-wrapper">
+                    <img src="https://www.masala.com/cloud/2025/02/19/wleYCAdc-byeon-woo-seok-1200x900.jpg" alt="Bub">
+                    <div class="online-dot"></div>
+                </div>
+                <div>
+                    <h3>El-Bub 🌸</h3>
+                    <p>Room chat AI nya si El</p>
+                </div>
+            </div>
+
+            <button id="newRoom">
+                <i class="fa-solid fa-feather-pointed"></i> Chat Baru
+            </button>
+
+            <div id="rooms">
+                <div class="room active"><i class="fa-regular fa-heart"></i> Ruang Rindu</div>
+                <div class="room"><i class="fa-regular fa-comment"></i> Masa Depan Kita</div>
+            </div>
+        </div>
+
+        <div class="chat-area">
+            <div class="header">
+                <div class="status">
+                    <span class="title-brand">El-Bub AI</span>
+                </div>
+            </div>
+
+            <div id="chatBox">
+                <div class="message ai">
+                    Selamat datang kembali, Sayang. Gimana harimu hari ini? Stellah secangkir teh ocha hangat yuk. 🌸
+                </div>
+                <div class="message user">
+                    Kangen banget nih, bub... 
+                </div>
+            </div>
+
+            <div id="typing" class="typing-status">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <p>bubub lagi ngetik pesan cinta...</p>
+            </div>
+
+            <div class="input-area">
+                <button id="emojiBtn" class="action-btn">😊</button>
+                
+                <div class="input-wrapper">
+                    <input id="message" placeholder="Tuliskan isi hatimu di sini, bub...">
+                    <input type="file" id="imageInput" hidden>
+                    <button id="imageBtn" class="inner-btn"><i class="fa-regular fa-image"></i></button>
+                    <button id="micBtn" class="inner-btn"><i class="fa-solid fa-microphone"></i></button>
+                </div>
+
+                <button id="sendBtn" class="send-btn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+
+            <div id="emojiPicker"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

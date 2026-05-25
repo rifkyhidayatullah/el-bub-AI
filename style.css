@@ -1,0 +1,570 @@
+/* --- RESET & FONTS PREMIUM --- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    /* Gradasi Romantis: Gelap Malam Kyoto ke Soft Sakura Pink */
+    background: linear-gradient(135deg, #2c1620 0%, #502237 40%, #a24872 75%, #fca6c4 100%);
+    color: #fff;
+}
+
+/* --- ANIMASI SAKURA BERGUGURAN (GACORRR) --- */
+.sakura-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.petal {
+    position: absolute;
+    background: linear-gradient(to bottom right, #ffb7d2, #ff8da1);
+    border-radius: 150% 0 150% 150%;
+    opacity: 0.8;
+    animation: fall 10s linear infinite;
+}
+
+/* Variasi Ukuran & Posisi Kelopak Sakura */
+.petal:nth-child(1) { width: 15px; height: 12px; left: 10%; animation-delay: 0s; animation-duration: 8s; }
+.petal:nth-child(2) { width: 20px; height: 16px; left: 30%; animation-delay: 2s; animation-duration: 11s; }
+.petal:nth-child(3) { width: 12px; height: 9px; left: 55%; animation-delay: 1s; animation-duration: 7s; }
+.petal:nth-child(4) { width: 18px; height: 14px; left: 75%; animation-delay: 4s; animation-duration: 13s; }
+.petal:nth-child(5) { width: 16px; height: 13px; left: 90%; animation-delay: 6s; animation-duration: 9s; }
+.petal:nth-child(6) { width: 22px; height: 17px; left: 45%; animation-delay: 3s; animation-duration: 12s; }
+.petal:nth-child(7) { width: 14px; height: 11px; left: 20%; animation-delay: 5s; animation-duration: 10s; }
+.petal:nth-child(8) { width: 17px; height: 13px; left: 85%; animation-delay: 1.5s; animation-duration: 8.5s; }
+
+@keyframes fall {
+    0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+    }
+    100% {
+        top: 110%;
+        transform: translateX(150px) rotate(450deg);
+    }
+}
+
+/* --- CONTAINER & LAYOUT GLASSMORPHISM --- */
+.container {
+    display: flex;
+    height: 100vh;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- SIDEBAR EKSKLUSIF --- */
+.sidebar {
+    width: 320px;
+    background: rgba(44, 22, 32, 0.55);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-right: 1px solid rgba(255, 183, 210, 0.2);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Profil Cantik */
+.profile {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-img-wrapper {
+    position: relative;
+}
+
+.profile img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffb7d2;
+    box-shadow: 0 0 15px rgba(255, 183, 210, 0.5);
+    animation: heartbeat 3s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+}
+
+.profile h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: #ffe3ec;
+}
+
+.profile p {
+    font-size: 0.75rem;
+    color: #ffb7d2;
+    letter-spacing: 0.5px;
+}
+
+.online-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    background: #4ade80;
+    border: 2px solid #2c1620;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4ade80;
+}
+
+/* Tombol Chat Baru Mewah */
+.sidebar button#newRoom {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(90deg, #ff758f, #ff7fa4);
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(255, 117, 143, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sidebar button#newRoom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 117, 143, 0.6);
+    background: linear-gradient(90deg, #ff8da1, #ff758f);
+}
+
+/* List Room */
+#rooms {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.room {
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+    color: #e0d0d8;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.room:hover, .room.active {
+    background: rgba(255, 117, 143, 0.15);
+    border-color: rgba(255, 117, 143, 0.4);
+    color: #fff;
+    padding-left: 24px; /* Efek bergeser elegan */
+    box-shadow: inset 0 0 10px rgba(255, 117, 143, 0.1);
+}
+
+/* --- CHAT AREA ROMANTIS --- */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+}
+
+.header {
+    padding: 20px 30px;
+    background: rgba(44, 22, 32, 0.3);
+    border-bottom: 1px solid rgba(255, 183, 210, 0.15);
+}
+
+.title-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #ffe3ec, #ffb7d2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(255, 183, 210, 0.3);
+}
+
+/* Chatbox & Bubbles */
+#chatBox {
+    flex: 1;
+    overflow-y: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    max-width: 65%;
+    padding: 14px 20px;
+    border-radius: 22px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    animation: msgFadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+@keyframes msgFadeIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.message.user {
+    margin-left: auto;
+    background: linear-gradient(135deg, #ff758f 0%, #ff5c7a 100%);
+    color: white;
+    border-radius: 20px 20px 4px 20px; /* Lengkungan sudut kanan bawah dibuat tajam */
+    box-shadow: 0 4px 15px rgba(255, 117, 143, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.message.ai {
+    margin-left: 0;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 183, 210, 0.25); /* Border pink tipis transparan */
+    color: #fff0f5;
+    border-radius: 20px 20px 20px 4px; /* Lengkungan sudut kiri bawah dibuat tajam */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Status Sedang Mengetik */
+.typing-status {
+    display: none; /* diaktifkan lewat JS */
+    align-items: center;
+    gap: 5px;
+    padding-left: 35px;
+    margin-bottom: 15px;
+}
+
+.typing-status p {
+    font-size: 0.85rem;
+    color: #ffb7d2;
+    font-style: italic;
+    margin-left: 5px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background: #ff8da1;
+    border-radius: 50%;
+    animation: dotBounce 1.4s infinite ease-in-out both;
+}
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotBounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* --- INPUT AREA PREMIUM --- */
+.input-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 30px;
+    background: rgba(44, 22, 32, 0.4);
+    border-top: 1px solid rgba(255, 183, 210, 0.15);
+}
+
+.action-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.3rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background: rgba(255, 117, 143, 0.2);
+    border-color: #ff758f;
+    transform: scale(1.05);
+}
+
+.input-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 5px 10px 5px 20px;
+}
+
+.input-wrapper:focus-within {
+    border-color: #ff8da1;
+    box-shadow: 0 0 15px rgba(255, 141, 161, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.input-wrapper input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 0.95rem;
+    padding: 10px 0;
+}
+
+.input-wrapper input::placeholder {
+    color: #c4aeb7;
+}
+
+.inner-btn {
+    background: transparent;
+    border: none;
+    color: #ffb7d2;
+    font-size: 1.1rem;
+    padding: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.inner-btn:hover {
+    color: #ff5c7a;
+    transform: scale(1.1);
+}
+
+/* Tombol Kirim Gacor */
+.send-btn {
+    background: linear-gradient(135deg, #ff758f 0%, #ff5c7a 100%);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 117, 143, 0.4);
+}
+
+.send-btn:hover {
+    transform: scale(1.1) rotate(-10deg);
+    box-shadow: 0 6px 20px rgba(255, 117, 143, 0.6);
+}
+
+/* --- RESPONSIVE RESPONSIVENESS --- */
+/* ====== MEDIA QUERY SUPER RESPONSIVE & MOBILE-READY ====== */
+@media (max-width: 768px) {
+    /* 1. Ubah susunan layout utama dari menyamping jadi tumpuk atas-bawah */
+    .container {
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    /* 2. Sesuaikan Sidebar jadi bar tipis di bagian atas HP */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 10px 15px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 183, 210, 0.15);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    /* Sembunyikan detail teks profil di HP agar hemat ruang */
+    .profile {
+        padding: 0;
+        background: transparent;
+        border: none;
+    }
+    .profile h3, .profile p, .profile .online-dot {
+        display: none;
+    }
+    .profile img {
+        width: 45px;
+        height: 45px;
+    }
+
+    /* Ubah tombol +Chat Baru jadi bulat imut di pojok atas */
+    .sidebar button#newRoom {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        margin: 0;
+        padding: 0;
+        font-size: 1.2rem;
+        box-shadow: 0 2px 10px rgba(255, 117, 143, 0.3);
+    }
+    /* Sembunyikan teks "+ Chat Baru" di HP, sisakan icon plus atau buat simpel */
+    .sidebar button#newRoom {
+        font-size: 0; /* sembunyikan teks bawaan */
+    }
+    .sidebar button#newRoom::before {
+        content: "＋"; /* ganti jadi simbol plus saja */
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    /* 3. Daftar Room bisa di-swipe geser kanan-kiri (horizontal scroll) */
+    #rooms {
+        flex: 1;
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        padding-bottom: 2px;
+        /* Sembunyikan scrollbar bawaan biar estetik */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    #rooms::-webkit-scrollbar {
+        display: none;
+    }
+
+    .room {
+        margin-bottom: 0;
+        padding: 8px 14px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        display: inline-flex;
+    }
+    .room:hover, .room.active {
+        padding-left: 14px; /* matikan efek geser kanan berlebihan di HP */
+    }
+
+    /* 4. Sesuaikan Tinggi Chat Area di layar sentuh */
+    .chat-area {
+        flex: 1;
+        height: calc(100vh - 65px); /* Potong tinggi bar atas */
+    }
+
+    .header {
+        padding: 10px 15px;
+    }
+    .title-brand {
+        font-size: 1.1rem;
+    }
+
+    #chatBox {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .message {
+        max-width: 80%; /* Lebarkan balon chat di HP biar teks gak menumpuk sempit */
+        padding: 10px 14px;
+        font-size: 0.88rem;
+    }
+
+    /* 5. Susun Ulang Bagian Input Bawah agar Tidak Berantakan */
+    .input-area {
+        padding: 10px 15px;
+        gap: 8px;
+    }
+
+    /* Atur ukuran tombol aksi (Emoji, Kamera, Mic, Kirim) agar presisi */
+    .action-btn, .send-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+
+    .input-wrapper {
+        padding: 2px 5px 2px 15px;
+    }
+
+    .input-wrapper input {
+        font-size: 0.88rem;
+        padding: 8px 0;
+    }
+
+    .inner-btn {
+        padding: 5px;
+        font-size: 0.95rem;
+        margin-left: 2px;
+    }
+
+/* 6. Atur Letak Pop-up Emoji Picker Menyesuaikan Lebar Layar HP */
+    #emojiPicker {
+        bottom: 70px;
+        left: 5% !important;
+        right: 5% !important;
+        width: 90% !important;
+    }
+    .picmo__popupContainer {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+} /* <--- Kurung kurawal ini BATAS AKHIR dari @media (max-width: 768px) */
+
+
+/* ====== BARIS SAKTI: DI LUAR MEDIA QUERY (BERLAKU DI PC & HP) ====== */
+
+/* Pastikan posisi dasar emoji picker aman */
+#emojiPicker {
+    position: absolute;
+    bottom: 95px;
+    left: 20px;
+    z-index: 9999 !important;
+}
+
+/* Ini yang bertugas memotong semua efek blur di semua device */
+.picmo__popupContainer {
+    z-index: 9999 !important;
+    backdrop-filter: none !important; 
+    -webkit-backdrop-filter: none !important; /* Paksa Chrome/Safari matikan blur */
+    filter: none !important; /* Mencegah efek blur dari chat area menurun ke kotak emoji */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 183, 210, 0.3) !important;
+    border-radius: 15px !important;
+    
+    /* Akselerasi Hardware GPU biar enteng anti-lag */
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    
+    animation: popupFastShow 0.15s ease-out;
+}
+
+@keyframes popupFastShow {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
