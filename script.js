@@ -1,5 +1,5 @@
 // ====== CONFIGURATION & INITIALIZATION ======
-const API_KEY = "AIzaSyDqFzs5q2Dyp2tunknsJf23ST6drXA5PJw";
+const API_KEY = "AIzaSyANPhshPk2Qz5Cvip12AFKGnqZhGR018NQ";
 
 const messageInput = document.getElementById("message");
 const sendBtn = document.getElementById("sendBtn");
