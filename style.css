@@ -1,5 +1,5 @@
 /* --- RESET & FONTS PREMIUM --- */
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,7 +8,9 @@
 }
 
 body {
+    /* Perubahan 1: Menggunakan dvh agar tinggi pas di HP & tidak terpotong address bar */
     height: 100vh;
+    height: 100dvh;
     overflow: hidden;
     /* Gradasi Romantis: Gelap Malam Kyoto ke Soft Sakura Pink */
     background: linear-gradient(135deg, #2c1620 0%, #502237 40%, #a24872 75%, #fca6c4 100%);
@@ -58,6 +60,7 @@ body {
 .container {
     display: flex;
     height: 100vh;
+    height: 100dvh; /* Perubahan 2: Memaksa container presisi mengikuti sisa layar device */
     position: relative;
     z-index: 2;
 }
@@ -72,6 +75,7 @@ body {
     padding: 25px;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 }
 
 /* Profil Cantik */
@@ -189,6 +193,7 @@ body {
     flex-direction: column;
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(10px);
+    overflow: hidden; /* Perubahan 3: Mencegah scroll bocor keluar layout utama */
 }
 
 .header {
@@ -392,6 +397,7 @@ body {
     .sidebar {
         width: 100%;
         height: auto;
+        min-height: 60px; /* Perubahan 4: Menjaga tinggi agar bar atas tidak penyok */
         padding: 10px 15px;
         border-right: none;
         border-bottom: 1px solid rgba(255, 183, 210, 0.15);
@@ -400,6 +406,7 @@ body {
         align-items: center;
         justify-content: space-between;
         gap: 10px;
+        flex-shrink: 0; /* Perubahan 5: Mengunci sidebar atas agar tidak mengecil di HP */
     }
 
     /* Sembunyikan detail teks profil di HP agar hemat ruang */
@@ -412,23 +419,28 @@ body {
         display: none;
     }
     .profile img {
-        width: 45px;
-        height: 45px;
+        width: 40px; /* Perubahan 6: Perkecil sedikit agar proporsional di HP */
+        height: 40px;
     }
 
     /* Ubah tombol +Chat Baru jadi bulat imut di pojok atas */
     .sidebar button#newRoom {
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         margin: 0;
         padding: 0;
-        font-size: 1.2rem;
+        font-size: 1rem;
         box-shadow: 0 2px 10px rgba(255, 117, 143, 0.3);
+        justify-content: center;
     }
-    /* Sembunyikan teks "+ Chat Baru" di HP, sisakan icon plus atau buat simpel */
+    /* Perubahan 7: Sembunyikan teks di dalam span (jika kamu pakai trik index.html sebelumnya) */
+    .sidebar button#newRoom span {
+        display: none;
+    }
+    /* Jika tidak pakai tag span di HTML, CSS font-size: 0 di bawah ini tetap jadi backup aman */
     .sidebar button#newRoom {
-        font-size: 0; /* sembunyikan teks bawaan */
+        font-size: 0; 
     }
     .sidebar button#newRoom::before {
         content: "＋"; /* ganti jadi simbol plus saja */
@@ -444,7 +456,7 @@ body {
         overflow-x: auto;
         overflow-y: hidden;
         white-space: nowrap;
-        padding-bottom: 2px;
+        padding: 2px 5px;
         /* Sembunyikan scrollbar bawaan biar estetik */
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -467,7 +479,7 @@ body {
     /* 4. Sesuaikan Tinggi Chat Area di layar sentuh */
     .chat-area {
         flex: 1;
-        height: calc(100vh - 65px); /* Potong tinggi bar atas */
+        height: auto; /* Perubahan 8: Diubah ke auto agar flexbox yang menghitung ruang sisa secara otomatis (ANTI MENDEM) */
     }
 
     .header {
@@ -483,42 +495,43 @@ body {
     }
 
     .message {
-        max-width: 80%; /* Lebarkan balon chat di HP biar teks gak menumpuk sempit */
+        max-width: 85%; /* Perubahan 9: Lebarkan sedikit balon chat di HP agar teks tidak terlalu sempit meluber ke bawah */
         padding: 10px 14px;
         font-size: 0.88rem;
     }
 
     /* 5. Susun Ulang Bagian Input Bawah agar Tidak Berantakan */
     .input-area {
-        padding: 10px 15px;
-        gap: 8px;
+        padding: 10px 12px;
+        gap: 6px;
+        flex-shrink: 0; /* Perubahan 10: MENGUNCI input area agar posisinya mutlak stabil paling bawah layar */
     }
 
     /* Atur ukuran tombol aksi (Emoji, Kamera, Mic, Kirim) agar presisi */
     .action-btn, .send-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.1rem;
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
     }
 
     .input-wrapper {
-        padding: 2px 5px 2px 15px;
+        padding: 2px 5px 2px 12px;
     }
 
     .input-wrapper input {
         font-size: 0.88rem;
-        padding: 8px 0;
+        padding: 6px 0;
     }
 
     .inner-btn {
-        padding: 5px;
-        font-size: 0.95rem;
-        margin-left: 2px;
+        padding: 4px;
+        font-size: 0.9rem;
+        margin-left: 1px;
     }
 
-/* 6. Atur Letak Pop-up Emoji Picker Menyesuaikan Lebar Layar HP */
+    /* 6. Atur Letak Pop-up Emoji Picker Menyesuaikan Lebar Layar HP */
     #emojiPicker {
-        bottom: 70px;
+        bottom: 65px;
         left: 5% !important;
         right: 5% !important;
         width: 90% !important;
@@ -527,7 +540,7 @@ body {
         width: 100% !important;
         max-width: 100% !important;
     }
-} /* <--- Kurung kurawal ini BATAS AKHIR dari @media (max-width: 768px) */
+} /* <--- Batas Akhir Media Query */
 
 
 /* ====== BARIS SAKTI: DI LUAR MEDIA QUERY (BERLAKU DI PC & HP) ====== */
